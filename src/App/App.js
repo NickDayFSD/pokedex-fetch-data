@@ -11,12 +11,30 @@ const POKEMON_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
 class App extends Component {
   state = {
-    pokemon: []
+    pokemon: [],
+    permPokeList: []
   }
 
   async componentDidMount() {
     const response = await request.get(POKEMON_API_URL);
-    this.setState({ pokemon: response.body.results });
+    this.setState({ pokemon: response.body.results, permPokeList: response.body.results });
+  }
+
+  handleSearch = ({ search, sortField }) => {
+    const nameRegex = new RegExp(search, 'i');
+    const { permPokeList } = this.state;
+
+    const searchedData = permPokeList
+      .filter(pokemon => {
+        return !search || pokemon.pokemon.match(nameRegex);
+      })
+      .sort((a, b) => {
+        if (a[sortField] < b[sortField]) return -1;
+        if (a[sortField] > b[sortField]) return 1;
+        return 0;
+      });
+
+    this.setState({ pokemon: searchedData });
   }
 
   render() {
@@ -27,7 +45,7 @@ class App extends Component {
 
         <Header />
 
-        <PokemonSearch />
+        <PokemonSearch onSearch={this.handleSearch} />
 
         <main>
           <PokemonList pokemon={pokemon} />

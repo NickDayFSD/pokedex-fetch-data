@@ -9,7 +9,6 @@ export default class PokemonItem extends Component {
     return (
       <div className="PokemonItem">
         <h2>{pokemon.pokemon}</h2>
-        <p>{pokemon.type}</p>
         <img src={pokemon.url_image} alt={pokemon.pokebase} />
         <p>Look how cute!</p>
       </div>

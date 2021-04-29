@@ -8,19 +8,20 @@
   grid-gap: 10px;
 
   justify-items: center;
+
+  h2 {
+    margin: 0;
+  }
+  
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+  
+  p {
+    margin: 0;
+    font-size: .9rem;
+  }
 }
 
-.PokemonItem h2 {
-  margin: 0;
-}
-
-.PokemonItem img {
-  height: 100%;
-  width: 100%;
-  object-fit: contain;
-}
-
-.PokemonItem p {
-  margin: 0;
-  font-size: .9rem;
-}

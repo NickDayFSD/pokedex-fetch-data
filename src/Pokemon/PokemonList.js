@@ -6,7 +6,7 @@ export default class PokemonList extends Component {
 
   render() {
     const { pokemon } = this.props;
-    console.log(pokemon);
+
     return (
       <ul className="PokemonList">
         {pokemon.map(pokemon => (
