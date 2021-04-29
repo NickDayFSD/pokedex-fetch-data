@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import './PokemonSearch.css';
+import './PokemonSearch.scss';
 
 export default class PokemonSearch extends Component {
 

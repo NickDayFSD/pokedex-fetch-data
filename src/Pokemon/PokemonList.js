@@ -1,13 +1,15 @@
 import { Component } from 'react';
-import './PokemonList.css';
+import PokemonItem from './PokemonItem';
+import './PokemonList.scss';
 
 export default class PokemonList extends Component {
 
   render() {
-    return (
-      <div className="PokemonList">
 
-      </div>
+    return (
+      <ul className="PokemonList">
+        <PokemonItem />
+      </ul>
     );
   }
 
