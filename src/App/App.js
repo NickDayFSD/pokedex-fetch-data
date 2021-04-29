@@ -16,10 +16,12 @@ class App extends Component {
 
   async componentDidMount() {
     const response = await request.get(POKEMON_API_URL);
-    console.log(response.body);
+    this.setState({ pokemon: response.body.results });
   }
 
   render() {
+    const { pokemon } = this.state;
+
     return (
       <div className="App">
 
@@ -28,7 +30,7 @@ class App extends Component {
         <PokemonSearch />
 
         <main>
-          <PokemonList />
+          <PokemonList pokemon={pokemon} />
         </main>
 
         <Footer />
