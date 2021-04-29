@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import PokemonList from '../Pokemon/PokemonList';
 import PokemonSearch from '../Pokemon/PokemonSearch';
+import request from 'superagent';
 
 class App extends Component {
 
