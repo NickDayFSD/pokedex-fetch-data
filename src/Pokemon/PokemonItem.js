@@ -6,9 +6,9 @@ export default class PokemonItem extends Component {
   render() {
     return (
       <div className="PokemonItem">
-        <h2>That Pokemon</h2>
+        <h2>Cute Pokemon!</h2>
         <img src='https://assets.pokemon.com/static2/_ui/img/account/pokemon-login.png' />
-        <p>Info about this Pokemon</p>
+        <p>Look, they're so cute!</p>
       </div>
     );
   }

@@ -14,6 +14,8 @@ class App extends Component {
 
         <Header />
 
+        <PokemonSearch />
+
         <main>
           <PokemonList />
         </main>

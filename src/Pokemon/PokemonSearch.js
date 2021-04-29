@@ -5,9 +5,19 @@ export default class PokemonSearch extends Component {
 
   render() {
     return (
-      <div className="PokemonSearch">
+      <form className="PokemonSearch">
+        <input
+          name='nameFilter'
+        />
 
-      </div>
+        <select>
+          <option value=''>Filter 1</option>
+          <option value='type'>Filter 2</option>
+          <option value='evolution'>Filter 3</option>
+        </select>
+
+        <button>Search</button>
+      </form>
     );
   }
 
