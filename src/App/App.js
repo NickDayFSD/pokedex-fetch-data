@@ -1,40 +1,30 @@
-import { Component } from 'react';
-import './App.scss';
-import React from 'react';
+import { Component, React } from 'react';
+import request from 'superagent';
+
 import Header from './Header';
 import Footer from './Footer';
+
 import PokemonList from '../Pokemon/PokemonList';
-import PokemonSearch from '../Pokemon/PokemonSearch';
-import request from 'superagent';
+import PokemonSearch from './PokemonSearch';
+
+import './App.scss';
 
 const POKEMON_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
 class App extends Component {
   state = {
-    pokemon: [],
-    permPokeList: []
+    pokemon: []
   }
 
   async componentDidMount() {
-    const response = await request.get(POKEMON_API_URL);
-    this.setState({ pokemon: response.body.results, permPokeList: response.body.results });
+    this.handleSearch();
   }
 
-  handleSearch = ({ search, sortField }) => {
-    const nameRegex = new RegExp(search, 'i');
-    const { permPokeList } = this.state;
+  handleSearch = async (searchOptions) => {
+    const response = await request.get(POKEMON_API_URL)
+      .query(searchOptions);
 
-    const searchedData = permPokeList
-      .filter(pokemon => {
-        return !search || pokemon.pokemon.match(nameRegex);
-      })
-      .sort((a, b) => {
-        if (a[sortField] < b[sortField]) return -1;
-        if (a[sortField] > b[sortField]) return 1;
-        return 0;
-      });
-
-    this.setState({ pokemon: searchedData });
+    this.setState({ pokemon: response.body.results });
   }
 
   render() {
@@ -48,7 +38,10 @@ class App extends Component {
         <PokemonSearch onSearch={this.handleSearch} />
 
         <main>
-          <PokemonList pokemon={pokemon} />
+          <PokemonList
+            pokemon={pokemon}
+            onPaging={this.handlePaging}
+          />
         </main>
 
         <Footer />
